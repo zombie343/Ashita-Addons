@@ -412,6 +412,7 @@ function generate_corsair_print(Number, ID, PTMembers, effected_Members)
             messagetoshow = messagetoshow .. '(+' 
             bonus = rollDataTable['rolls'][Number]
         end
+        main = GetEquipped(0)
         ring1 = GetEquipped(13)
         ring2 = GetEquipped(14)
         neck = GetEquipped(9)
@@ -419,7 +420,10 @@ function generate_corsair_print(Number, ID, PTMembers, effected_Members)
             EffectBonus = rollDataTable['effect']
 
             if EffectBonus ~= "Unknown" and rollName ~= "Companion's Roll" then
-                if neck == 26038 then -- 7
+                if main == 21581 then -- 8
+                    mathedEffect = EffectBonus * 8
+                    bonus = bonus + mathedEffect
+                elseif neck == 26038 then -- 7
                     mathedEffect = EffectBonus * 7
                     bonus = bonus + mathedEffect
                 elseif ring1 == 28548 or ring2 == 28548 then -- 5
@@ -445,7 +449,10 @@ function generate_corsair_print(Number, ID, PTMembers, effected_Members)
                     for number in string.gmatch(bonus, '([^,]+)') do
                         if i == 0 then
                             Companion_1 = number
-                            if neck == 26038 then -- 7
+                            if main == 21581 then -- 8
+                                mathedEffect = Effect_1 * 8
+                                Companion_1 = Companion_1 + mathedEffect
+                            elseif neck == 26038 then -- 7
                                 mathedEffect = Effect_1 * 7
                                 Companion_1 = Companion_1 + mathedEffect
                             elseif ring1 == 28548 or ring2 == 28548 then -- 5
@@ -457,7 +464,10 @@ function generate_corsair_print(Number, ID, PTMembers, effected_Members)
                             end
                         elseif i == 1 then
                             Companion_2 = number
-                            if neck == 26038 then -- 7
+                            if main == 21581 then -- 8
+                                mathedEffect = Effect_2 * 8
+                                Companion_2 = Companion_2 + mathedEffect
+                            elseif neck == 26038 then -- 7
                                 mathedEffect = Effect_2 * 7
                                 Companion_2 = Companion_2 + mathedEffect
                             elseif ring1 == 28548 or ring2 == 28548 then -- 5
